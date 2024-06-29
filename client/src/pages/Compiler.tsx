@@ -6,7 +6,9 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
+
 export default function Compiler() {
+  
   return (
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel
