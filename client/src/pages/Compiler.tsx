@@ -6,9 +6,18 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 
 export default function Compiler() {
+  
+  const { urlId } = useParams();
+  useEffect(()=>{
+    if(urlId){
+      
+    }
+  },[urlId])
   
   return (
     <ResizablePanelGroup direction="horizontal">

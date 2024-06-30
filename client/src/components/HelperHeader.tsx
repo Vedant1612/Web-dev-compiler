@@ -1,4 +1,4 @@
-import { Share2, Save } from "lucide-react";
+import { Share2, Save, LoaderCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Select,
@@ -15,20 +15,28 @@ import {
 import { RootState } from "@/redux/store";
 import { handleError } from "@/utils/handleError";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function HelperHeader() {
+  const [saveLoading, setSaveLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   const fullCode = useSelector(
     (state: RootState) => state.compilerSlice.fullCode
   );
   const handleSaveCode = async () => {
+    setSaveLoading(true);
     try {
       const response = await axios.post("http://localhost:4000/compiler/save", {
         fullCode: fullCode,
       });
       console.log(response.data);
-      
+      navigate(`/compiler/${response.data.url}`, { replace: true });
     } catch (error) {
       handleError(error);
+    } finally {
+      setSaveLoading(false);
     }
   };
   const dispatch = useDispatch();
@@ -39,12 +47,22 @@ export default function HelperHeader() {
     <div className="__helper_header h-[50px] bg-black text-white p-2 flex justify-between items-center">
       <div className="__btn_container flex gap-1">
         <Button
-        onClick={handleSaveCode}
+          onClick={handleSaveCode}
           className="flex justify-center items-center gap-1"
           variant="success"
+          disabled={saveLoading}
         >
-          <Save size={16} />
-          Save
+          {saveLoading ? (
+            <>
+              <LoaderCircle  className="animate-spin" />
+              Saving...
+            </>
+          ) : (
+            <>
+              <Save size={16} />
+              Save
+            </>
+          )}
         </Button>
         <Button
           className="flex justify-center items-center gap-1"
