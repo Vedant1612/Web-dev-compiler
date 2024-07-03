@@ -1,4 +1,4 @@
-import { Share2, Save, Code, Copy, Loader2 } from "lucide-react";
+import { Share2, Save, Code, Copy, Loader2, Download } from "lucide-react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import {
@@ -35,6 +35,54 @@ export default function HelperHeader() {
     (state: RootState) => state.compilerSlice.fullCode
   );
   const [saveCode, { isLoading }] = useSaveCodeMutation();
+
+  const handleDownloadCode = () => {
+    if (
+      fullCode.html === "" &&
+      fullCode.css === "" &&
+      fullCode.javascript === ""
+    ) {
+      toast("Error: Code is Empty");
+    } else {
+      const htmlCode = new Blob([fullCode.html], { type: "text/html" });
+      const cssCode = new Blob([fullCode.css], { type: "text/css" });
+      const javascriptCode = new Blob([fullCode.javascript], {
+        type: "text/javascript",
+      });
+
+      const htmlLink = document.createElement("a");
+      const cssLink = document.createElement("a");
+      const javascriptLink = document.createElement("a");
+
+      htmlLink.href = URL.createObjectURL(htmlCode);
+      htmlLink.download = "index.html";
+      document.body.appendChild(htmlLink);
+
+      cssLink.href = URL.createObjectURL(cssCode);
+      cssLink.download = "style.css";
+      document.body.appendChild(cssLink);
+
+      javascriptLink.href = URL.createObjectURL(javascriptCode);
+      javascriptLink.download = "script.js";
+      document.body.appendChild(javascriptLink);
+
+      if (fullCode.html !== "") {
+        htmlLink.click();
+      }
+      if (fullCode.css !== "") {
+        cssLink.click();
+      }
+      if (fullCode.javascript !== "") {
+        javascriptLink.click();
+      }
+
+      document.body.removeChild(htmlLink);
+      document.body.removeChild(cssLink);
+      document.body.removeChild(javascriptLink);
+
+      toast("Code Downloaded Successfully!");
+    }
+  };
 
   const { urlId } = useParams();
   useEffect(() => {
@@ -76,6 +124,10 @@ export default function HelperHeader() {
               <Save size={16} />
             </>
           )}
+        </Button>
+
+        <Button onClick={handleDownloadCode} size="icon" variant="blue">
+          <Download size={16} />
         </Button>
 
         {shareBtn && (
