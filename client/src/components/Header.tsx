@@ -5,12 +5,16 @@ import { RootState } from "@/redux/store";
 import { handleError } from "@/utils/handleError";
 import { useLogoutMutation } from "@/redux/slices/api";
 import { updateCurrentUser, updateIsLoggedIn } from "@/redux/slices/appSlice";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default function Header() {
   const [logout, { isLoading }] = useLogoutMutation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(
     (state: RootState) => state.appSlice.isLoggedIn
+  );
+  const currentUser = useSelector(
+    (state: RootState) => state.appSlice.currentUser
   );
 
   async function handleLogout() {
@@ -43,6 +47,14 @@ export default function Header() {
               >
                 Logout
               </Button>
+            </li>
+            <li>
+              <Avatar>
+                <AvatarImage src={currentUser.picture} />
+                <AvatarFallback className="capitalize">
+                  {currentUser.username?.slice(0, 2)}
+                </AvatarFallback>
+              </Avatar>
             </li>
           </>
         ) : (
