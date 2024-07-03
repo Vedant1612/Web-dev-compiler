@@ -1,4 +1,4 @@
-import { Share2, Save, LoaderCircle, Code, Copy } from "lucide-react";
+import { Share2, Save, Code, Copy, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import {
@@ -65,25 +65,25 @@ export default function HelperHeader() {
           className="flex justify-center items-center gap-1"
           variant="success"
           disabled={isLoading}
+          size="icon"
         >
           {isLoading ? (
             <>
-              <LoaderCircle className="animate-spin" />
-              Saving...
+              <Loader2 className="animate-spin" />
             </>
           ) : (
             <>
               <Save size={16} />
-              Save
             </>
           )}
         </Button>
 
         {shareBtn && (
           <Dialog>
-            <DialogTrigger className="whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 flex justify-center items-center gap-1">
-              <Share2 size={16} />
-              Share
+            <DialogTrigger asChild>
+              <Button size="icon" variant="secondary">
+                <Share2 size={16} />
+              </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
