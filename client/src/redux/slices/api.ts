@@ -39,7 +39,7 @@ export const api = createApi({
         url: "/user/login",
         method: "POST",
         body: body,
-        // credentials: "include",
+        credentials: "include",
       }),
     }),
     signup: builder.mutation<userInfoType, signupCredentialsType>({

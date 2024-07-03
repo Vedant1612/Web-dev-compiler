@@ -7,7 +7,7 @@ import { compilerRoutes } from "./routes/compilerRoutes";
 import { userRouter } from "./routes/userRoutes";
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({credentials:true,origin:"http://localhost:5173"}));
 config();
 
 app.use('/compiler', compilerRoutes)
