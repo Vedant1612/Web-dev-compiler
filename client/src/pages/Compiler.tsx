@@ -10,7 +10,7 @@ import { handleError } from "@/utils/handleError";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateFullCode } from "@/redux/slices/compilerSlice";
+import { updateFullCode, updateIsOwner } from "@/redux/slices/compilerSlice";
 import { useLoadCodeMutation } from "@/redux/slices/api";
 import Loader from "@/components/Loader/Loader";
 
@@ -24,6 +24,7 @@ export default function Compiler() {
       if (urlId) {
         const response = await loadExistingCode({ urlId }).unwrap();
         dispatch(updateFullCode(response.fullCode));
+        dispatch(updateIsOwner(response.isOwner))
       }
     } catch (error) {
       handleError(error);

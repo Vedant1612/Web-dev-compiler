@@ -6,6 +6,7 @@ import { handleError } from "@/utils/handleError";
 import { useLogoutMutation } from "@/redux/slices/api";
 import { updateCurrentUser, updateIsLoggedIn } from "@/redux/slices/appSlice";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { updateIsOwner } from "@/redux/slices/compilerSlice";
 
 export default function Header() {
   const [logout, { isLoading }] = useLogoutMutation();
@@ -22,6 +23,7 @@ export default function Header() {
       await logout().unwrap();
       dispatch(updateIsLoggedIn(false));
       dispatch(updateCurrentUser({}));
+      dispatch(updateIsOwner(false));
     } catch (error) {
       handleError(error);
     }

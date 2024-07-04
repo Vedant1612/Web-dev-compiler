@@ -6,7 +6,6 @@ import { AuthRequest } from "../middlewares/verifyToken";
 
 export const signup = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
-  
   const usernameRegex = /^[a-zA-Z0-9]+$/;
   try {
     const existingUser = await User.findOne({ email: email });
@@ -57,8 +56,6 @@ export const signup = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   const { userId, password }: { userId: string; password: string } = req.body;
-    // console.log(userId);
-
   try {
     let existingUser = undefined;
 

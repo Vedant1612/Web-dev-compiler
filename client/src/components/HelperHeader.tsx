@@ -166,16 +166,16 @@ export default function HelperHeader() {
 
         {shareBtn && (
           <>
-            {isOwner && (
-              <Button
-                loading={codeEditLoading}
-                onClick={handleEditCode}
-                variant="blue"
-              >
-                <PencilLine size={16} />
-                Edit
-              </Button>
-            )}
+          {isOwner && (
+          <Button
+            loading={codeEditLoading}
+            onClick={handleEditCode}
+            variant="blue"
+          >
+            <PencilLine size={16} />
+            Edit
+          </Button>
+        )}
             <Dialog>
               <DialogTrigger asChild>
                 <Button size="icon" variant="secondary">
