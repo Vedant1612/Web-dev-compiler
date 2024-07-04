@@ -52,6 +52,10 @@ export const loadCode = async (req: AuthRequest, res: Response) => {
       return res.status(404).send({ message: "Code not found" });
     }
     const user = await User.findById(userId);
+    // console.log(user?.username);
+    // console.log(existingCode.ownerName);
+    
+    
     if (user?.username === existingCode.ownerName) {
       isOwner = true;
     }
