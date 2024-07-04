@@ -34,11 +34,21 @@ export default function Header() {
       <ul className="flex gap-2">
         <li>
           <Link to="/compiler">
-            <Button variant="secondary">Compiler</Button>
+            <Button variant="link">Compiler</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/all-codes">
+            <Button variant="link">All Codes</Button>
           </Link>
         </li>
         {isLoggedIn ? (
           <>
+            <li>
+              <Link to="/my-codes">
+                <Button variant="blue">My Codes</Button>
+              </Link>
+            </li>
             <li>
               <Button
                 loading={isLoading}
