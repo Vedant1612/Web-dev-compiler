@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "https://web-dev-compiler-1.onrender.com" }));
+app.use(cors({ credentials: true, origin: "*" }));
 config();
 
 app.use("/compiler", compilerRoutes);
