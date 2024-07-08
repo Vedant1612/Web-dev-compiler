@@ -15,6 +15,8 @@ export const verifyToken = async (
   if (!token) {
     return res.status(401).send({ message: "You are unauthorized!." });
   }
+  console.log(token);
+  
   jwt.verify(
     token,
     process.env.JWT_KEY!,
