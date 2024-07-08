@@ -1,12 +1,6 @@
-import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import Compiler from "./pages/Compiler";
-import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "./components/ui/sonner";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import { useEffect } from "react";
 import { useGetUserDetailsQuery } from "./redux/slices/api";
 import { useDispatch } from "react-redux";
@@ -32,7 +26,7 @@ function App() {
       <Toaster position="bottom-right" theme="dark" />
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Header />
-        <AllRoutes/>
+        <AllRoutes />
       </ThemeProvider>
     </>
   );
