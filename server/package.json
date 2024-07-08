@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "stage": "tsc && git status && git add ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Vedant Kulkarni",
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
