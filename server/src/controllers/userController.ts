@@ -41,7 +41,7 @@ export const signup = async (req: Request, res: Response) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "none",
     });
 
     return res.status(201).send({
@@ -94,7 +94,7 @@ export const login = async (req: Request, res: Response) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "none",
     });
 
     return res.status(200).send({
