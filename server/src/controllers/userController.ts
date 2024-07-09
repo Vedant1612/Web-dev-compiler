@@ -41,6 +41,7 @@ export const signup = async (req: Request, res: Response) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       httpOnly: true,
+      secure: true,
       sameSite: "none",
     });
 
@@ -94,6 +95,7 @@ export const login = async (req: Request, res: Response) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
       httpOnly: true,
+      secure: true,
       sameSite: "none",
     });
 

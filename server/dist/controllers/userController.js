@@ -37,6 +37,7 @@ const signup = async (req, res) => {
             path: "/",
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
             httpOnly: true,
+            secure: true,
             sameSite: "none",
         });
         return res.status(201).send({
@@ -78,6 +79,7 @@ const login = async (req, res) => {
             path: "/",
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
             httpOnly: true,
+            secure: true,
             sameSite: "none",
         });
         return res.status(200).send({
