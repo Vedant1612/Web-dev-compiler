@@ -74,7 +74,7 @@ To get a local copy up and running, follow these steps:
   cd ../client
   npm start
 ```
-3. **Visit http://localhost:3000 in your browser to start using the Web Dev Compiler.**
+3. **Visit http://localhost:4000 in your browser to start using the Web Dev Compiler.**
 
 
 ## Contributation
